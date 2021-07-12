@@ -1,0 +1,23 @@
+SELECT  c.ClientID , c.GivenNames ,c.FamilyName ,c.DateOfBirth ,c.HomeEmailAddress ,c.AlternateEmailAddress
+,m.MemberNumber ,AccountTypeCode ,c.UniSuperIdentifier 
+from Super.Clients c 
+JOIN Super.Members m ON c.ClientID =m.ClientID 
+JOIN super.Accounts a ON m.MemberID =a.MemberID 
+WHERE a.AccountTypeCode ='AB' 
+and a.AccountStatus ='current' 
+
+ 
+
+SELECT * from super.Accounts 
+SELECT * from Reference.AccountTypes 
+--C    Accumulation 2
+--D    Accumulation 1
+--AB    Defined Benefit
+
+  SELECT top 100 c.ClientID , c.FamilyName as surname, c.GivenNames as givenname,c.DateOfBirth as dateofbirth,c.HomeEmailAddress homeemail ,c.AlternateEmailAddress
+,m.MemberNumber ,AccountTypeCode ,c.UniSuperIdentifier 
+from [ODS_Common].[Super].[Clients] c 
+JOIN [ODS_Common].[Super].[Members] m ON c.ClientID =m.ClientID 
+JOIN [ODS_Common].[Super].[Accounts] a ON m.MemberID =a.MemberID 
+WHERE a.AccountTypeCode in ('AB' ,'C','D')
+and a.AccountStatus ='current' 
